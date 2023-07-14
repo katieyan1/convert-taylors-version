@@ -1,0 +1,36 @@
+html {
+  background-color: #923c81;
+}
+.container {
+  max-width: 80%;
+  margin: 10rem auto -6rem;
+}
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  color: #d8b7e2;
+}
+.tv {
+  font-family: "Hertine", serif;
+  font-style: normal;
+  font-weight: 500;
+}
+button {
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  padding: 18px 48px 16px;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  border-width: 0;
+  letter-spacing: 2px;
+  min-width: 160px;
+  text-transform: uppercase;
+  white-space: normal;
+  cursor: pointer;
+  background-color: #d8b7e2;
+}
+
+button:hover {
+  background-color: #d0a5dd;
+}
