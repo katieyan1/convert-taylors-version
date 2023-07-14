@@ -44,7 +44,7 @@ const Convert = () => {
   useEffect(() => {});
   return (
     <div className="container">
-      {state === "" && (
+      {state === "start" && (
         <button onClick={replacePlaylists}>...Ready For It</button>
       )}
       {state === "loading" && (
@@ -57,7 +57,7 @@ const Convert = () => {
           </h2>
         </div>
       )}
-      {state === "start" && <h1>Done!</h1>}
+      {state === "done" && <h1>Done!</h1>}
     </div>
   );
 };
