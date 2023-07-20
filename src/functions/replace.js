@@ -1,38 +1,6 @@
 import { getOldSongsFromPlaylist } from "./getOldSongsFromPlaylist";
-
-async function add(playlist_id, tv_song_id, position) {
-  let accessToken = localStorage.getItem("access_token");
-  let body = {
-    uris: ["spotify:track:" + tv_song_id],
-    position: position,
-  };
-  await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, {
-    method: "POST",
-    headers: {
-      Authorization: "Bearer " + accessToken,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
-  });
-}
-
-async function remove(playlist_id, song_ids) {
-  let accessToken = localStorage.getItem("access_token");
-  let tracks = song_ids.map((id) => {
-    return { uri: "spotify:track:" + id };
-  });
-  let body = {
-    tracks: tracks,
-  };
-  await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, {
-    method: "DELETE",
-    headers: {
-      Authorization: "Bearer " + accessToken,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
-  });
-}
+import { add } from "./add";
+import { remove } from "./remove";
 
 export async function replace(playlist_id) {
   let songs_to_replace = await getOldSongsFromPlaylist(playlist_id);
