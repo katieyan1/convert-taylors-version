@@ -14,7 +14,6 @@ async function add(playlist_id, tv_song_id, position) {
     },
     body: JSON.stringify(body),
   });
-
 }
 
 async function remove(playlist_id, song_ids) {
@@ -38,9 +37,12 @@ async function remove(playlist_id, song_ids) {
 export async function replace(playlist_id) {
   let songs_to_replace = await getOldSongsFromPlaylist(playlist_id);
   console.log("songs to replace" + songs_to_replace);
-  songs_to_replace.slice().reverse().forEach((song) => {
-    await add(playlist_id, song.tv, song.position);
-  })
+  songs_to_replace
+    .slice()
+    .reverse()
+    .forEach((song) => {
+      add(playlist_id, song.tv, song.position);
+    });
   let ids_to_replace = songs_to_replace.map((song) => {
     return song.old;
   });
