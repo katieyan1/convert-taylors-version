@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as AUTH from "../../constants/auth";
-import { replace } from "../../functions/replace";
 import { getPlaylists } from "../../functions/getPlaylists";
 
 import "./Convert.css";
+import { updatePlaylist } from "../../functions/updatePlaylist";
 
 const Convert = () => {
   // const [playlistsShown, setPlaylistsShown] = useState(false);
@@ -36,12 +36,12 @@ const Convert = () => {
     setState("loading");
     await getAccessToken();
     const playlists = await getPlaylists();
-    playlists.map((playlist) => {
-      replace(playlist.id);
+    playlists.forEach((playlist) => {
+      updatePlaylist(playlist.id);
     });
     setState("done");
   }
-  useEffect(() => {});
+
   return (
     <div className="container">
       {state === "start" && (
